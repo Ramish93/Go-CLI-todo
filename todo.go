@@ -17,7 +17,7 @@ type item struct {
 
 type Todos []item
 
-func (t *Todos) add(task string) {
+func (t *Todos) Add(task string) {
 
 	todo:= item{
 		Task: task,

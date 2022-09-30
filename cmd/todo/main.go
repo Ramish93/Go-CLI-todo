@@ -29,10 +29,17 @@ func main() {
 
 	switch {
 	case *add:
-		todos.Add(task: "sample todo")
+
+		task, err := getInput(os.Stdin, flag.Args()...)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err.Error())
+			os.Exit(1)
+		}
+
+		todos.Add(task)
 		err = todos.Store(todoFile)
 		if err != nil {
-			fmt.Println(os.stderr, err.Error())
+			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
 	case complete > 0:
