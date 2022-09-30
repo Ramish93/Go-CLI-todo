@@ -67,6 +67,7 @@ func main() {
 func(t *Todos) Print(){
 
 	for i,item := range *t {
+		i++
 		fmt.Printf(format: "%d: %s\n", i, item.Task)
 	}
 }
