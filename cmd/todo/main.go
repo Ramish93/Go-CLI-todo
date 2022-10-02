@@ -2,8 +2,10 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"strings"
 
@@ -70,14 +72,6 @@ func main() {
 	default:
 		fmt.Println(os.Stdout, "invalid command")
 		os.Exit(0)
-	}
-}
-
-func(t *Todos) Print(){
-
-	for i,item := range *t {
-		i++
-		fmt.Printf(format: "%d: %s\n", i, item.Task)
 	}
 }
 
