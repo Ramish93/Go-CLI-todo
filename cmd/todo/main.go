@@ -45,32 +45,32 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-	case complete > 0:
-		err:= todos.Complete(*complete)
-		if err != nil {
-			fmt.Println(os.Stderr, err.Error())
-			os.Exit(1)
-		}
-		err := todos.Store(todoFile)
+	case *complete > 0:
+		err := todos.Complete(*complete)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-	case *del > 0 :
-		err := todos.Delete(*del)
+		err = todos.Store(todoFile)
 		if err != nil {
-			fmt.Println(os.Stderr, err.Error())
+			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-		err:= todos.Store(todoFile)
+	case *del > 0:
+		err := todos.Delete(*del)
 		if err != nil {
-			fmt.Println(os.stderr, err.Error())
+			fmt.Fprintln(os.Stderr, err.Error())
+			os.Exit(1)
+		}
+		err = todos.Store(todoFile)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
 	case *list:
 		todos.Print()
 	default:
-		fmt.Println(os.Stdout, "invalid command")
+		fmt.Fprintln(os.Stdout, "invalid command")
 		os.Exit(0)
 	}
 }
