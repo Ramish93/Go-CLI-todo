@@ -114,6 +114,8 @@ func(t *Todos) Print(){
 
 	table.Footer = &simpletable.Footer{Cells: []*simpletable.Cell{
 		{Align: simpletable.AlignCenter, Span: 5, Text: "Your todos are here..."},
-
 	}}
+	table.SetStyle(simpletable.StyleUnicode)
+
+	table.Print()
 }
